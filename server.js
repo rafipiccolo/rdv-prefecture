@@ -3,9 +3,12 @@ var request = require('request');
 var exec = require('child_process').execFile;
 var jar = request.jar();
 
+var url = 'http://www.seine-saint-denis.gouv.fr/booking/create/2616/0';
+var wait = 5;
+
 function isRdvDisponible(callback) {
     request({
-        url: 'http://www.seine-saint-denis.gouv.fr/booking/create/2616/0',
+        url: url,
         method: 'post',
         form: {
             condition: 'on',
@@ -17,6 +20,8 @@ function isRdvDisponible(callback) {
         },
         jar: jar
     }, function(err, response, body) {
+
+        // gère les erreurs possibles
         if (err) return callback('erreur grave :) '+err.code+' '+err.message);
         if (response.statusCode != 200) return callback('Le site est planté : code '+response.statusCode);
         
@@ -36,9 +41,15 @@ function startWatch() {
     var start = new Date();
     isRdvDisponible(function(message, ok) {
         var end = new Date();
+
+        // on affiche le resultat
         console.log(moment().format('YYYY-MM-DD HH:mm:ss')+' '+(String(end-start).padStart(6, ' '))+'ms '+message);
+
+        // si un rdv est disponible :
         if (ok) exec('/usr/bin/say', ['rdv disponible'], function() {});
-        setTimeout(startWatch, 5000)
+
+        // on attend un peu et on relance le programme
+        setTimeout(startWatch, wait * 1000)
     });
 }
 
