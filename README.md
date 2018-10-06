@@ -3,17 +3,30 @@ Permet de surveiller le site de la prefecture afin de savoir quand un rdv aparai
 
 ## Pour installer :
     
-    $ git clone https://github.com/rafipiccolo/rdv-prefecture.git rdv-prefecture
-    $ cd rdv-prefecture
-    $ npm install
+    - installez nodejs
+    
+    - récupérer le projet
+        via git : 
+        $ git clone https://github.com/rafipiccolo/rdv-prefecture.git rdv-prefecture
+    
+        ou directement en téléchargeant le zip :
+        https://github.com/rafipiccolo/rdv-prefecture/archive/master.zip
+        decompresser le zip.
 
-## Pour lancer :
+    - aller dans le dossier du projet avec le terminal et lancer la commande :
+        $ npm install
+
+## Pour lancer le projet :
     $ node server.js
 
-## réglages
-Par default il se connecte au site toutes les 5 secondes.
-Et il utilise la commande say du pc pour dire qu'il y a un rdv de disponible
+## fonctionnement
+    Par default il se connecte :
+    - sur http://www.seine-saint-denis.gouv.fr/booking/create/2616/0
+    - toutes les 5 secondes.
+    - et il utilise la commande say du pc pour dire qu'il y a un rdv de disponible
 
-ps: la comande say ne marche que sur mac
+    ps: la comande say ne marche que sur mac
 
-La durée et l'action effectuée peuvent facilement être modifiée directement dans le fichier server.js
+    La durée et l'action effectuée peuvent facilement être modifiée directement dans le fichier server.js
+
+Bon courage à tous les étrangers !
