@@ -26,6 +26,8 @@ Permet de surveiller le site de la prefecture afin de savoir quand un rdv aparai
     - et il utilise la commande say du pc pour dire qu'il y a un rdv de disponible
 
     ps: la comande say ne marche que sur mac
+    
+    sur windows vous pouvez essayer de télécharger jampal ptts et utiliser en exec un 'echo Appointment found|cscript /votrechemin/ptts.vbs'
 
     La durée et l'action effectuée peuvent facilement être modifiée directement dans le fichier server.js
 
